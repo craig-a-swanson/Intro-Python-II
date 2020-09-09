@@ -49,3 +49,15 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# The following loop prints the name and description for each room
+# for each_room in room:
+#     print(room[each_room])
+
+# The following block demonstrates how to handle a movement to a room that doesn't exist
+test_room = 'foyer'
+try:
+    new_room = room[test_room].w_to
+    print(new_room)
+except AttributeError:
+    print("Nothing")
