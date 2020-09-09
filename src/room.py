@@ -17,4 +17,4 @@ class Room:
     # n_to = property(_get_n_to, _set_n_to)
     
     def __str__(self):
-        return f"Your current location is {self.name}.\n{self.description}"
+        return f"Your current location is: {self.name}.\n{self.description}"

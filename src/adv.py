@@ -40,8 +40,11 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-current_player = Player(current_room = room['outside'])
-print(f"Welcome {current_player.name}!\n{current_player.current_room}")
+input_name = input("\n\nWelcome explorer!\n\nPlease enter your name: ")
+if input_name == "":
+    input_name = 'Player1'
+current_player = Player(input_name, room['outside'])
+print(f"\nStart your adventure, {current_player.name}...\n\n{current_player.current_room}")
 
 
 # Write a loop that:
@@ -59,20 +62,16 @@ user_input = ""
 while user_input != 'q':
 
     user_input = input("Select your next move. ")
-    if user_input in ['n', 'e', 's', 'w', 'q']:
+    if user_input in ['n', 'e', 's', 'w']:
         new_room = getattr(current_player.current_room, str(user_input + '_to'))
         if new_room != None:
             current_player.current_room = new_room
             print(current_player.current_room)
         else:
             print("That's a void. Try again.")
-    else:
-        print("Please enter n, e, s, or w.")
+    elif user_input not in ['q']:
+        print("Please enter n, e, s, or w to move. Enter q to quit.")
 
-
-# The following loop prints the name and description for each room
-# for each_room in room:
-#     print(room[each_room])
 
 # The following block demonstrates how to handle a movement to a room that doesn't exist
 # test_room = 'foyer'
