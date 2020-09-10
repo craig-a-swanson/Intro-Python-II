@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+import item
 import textwrap
 
 # Declare all the rooms
@@ -9,7 +10,7 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [item.level_map, item.torch]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
@@ -20,7 +21,7 @@ to north. The smell of gold permeates the air."""),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
+earlier adventurers. The only exit is to the south.""", [item.large_map, item.flashlight])
 }
 
 
@@ -61,7 +62,7 @@ print(f"\nStart your adventure, {current_player.name}...\n\n{current_player.curr
 user_input = ""
 while user_input != 'q':
 
-    user_input = input("Select your next move. ")
+    user_input = input("\nSelect your next move. ")
     if user_input in ['n', 'e', 's', 'w']:
         new_room = getattr(current_player.current_room, str(user_input + '_to'))
         if new_room != None:
