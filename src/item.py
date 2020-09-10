@@ -34,8 +34,8 @@ class Reference(Item):
 
 # Possible Items to find
 torch = Light("Torch", "Oil soaked rags on a stick", 3, 2)
-lantern = Light("Handheld Lantern", "A moderately sized plastic and metal, battery powered lantern", 5, 7)
+lantern = Light("Lantern", "A moderately sized plastic and metal, battery powered lantern", 5, 7)
 flashlight = Light("Flashlight", "Handheld metal cylinder with an LED bulb", 7, 8)
-spellbook = Reference("Book of Spells", "A large reference manual containing all sorts of chants and stuff", 10)
-level_map = Reference("Area Map", "A detailed paper map of current surronding area", 2)
-large_map = Reference("Large Map", "A detailed, multi-page map of a large swath of areas", 5)
+spellbook = Reference("Spellbook", "A large reference manual containing all sorts of chants and stuff", 10)
+level_map = Reference("Map", "A detailed paper map of current surronding area", 2)
+large_map = Reference("Atlas", "A detailed, multi-page map of a large swath of areas", 5)
