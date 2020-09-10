@@ -62,22 +62,17 @@ print(f"\nStart your adventure, {current_player.name}...\n\n{current_player.curr
 user_input = ""
 while user_input != 'q':
 
-    user_input = input("\nSelect your next move. ")
-    if user_input in ['n', 'e', 's', 'w']:
-        new_room = getattr(current_player.current_room, str(user_input + '_to'))
-        if new_room != None:
-            current_player.current_room = new_room
-            print(current_player.current_room)
-        else:
-            print("That's a void. Try again.")
-    elif user_input not in ['q']:
-        print("Please enter n, e, s, or w to move. Enter q to quit.")
-
-
-# The following block demonstrates how to handle a movement to a room that doesn't exist
-# test_room = 'foyer'
-# try:
-#     new_room = room[test_room].e_to
-#     print(new_room)
-# except AttributeError:
-#     print("Nothing")
+    user_input = input("\nSelect your next move. ").split(" ")
+    if len(user_input) == 1:
+        user_input = user_input[0]
+        if user_input in ['n', 'e', 's', 'w']:
+            new_room = getattr(current_player.current_room, str(user_input + '_to'))
+            if new_room != None:
+                current_player.current_room = new_room
+                print(current_player.current_room)
+            else:
+                print("That's a void. Try again.")
+        elif user_input not in ['q']:
+            print("Please enter n, e, s, or w to move. Enter q to quit.")
+    elif len(user_input) == 2:
+        pass
