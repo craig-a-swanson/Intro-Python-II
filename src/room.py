@@ -11,8 +11,8 @@ class Room:
         self.s_to = None
         self.e_to = None
         self.w_to = None
-    
-    
+
+
     def __str__(self):
         output = f"Your current location is: {self.name}.\n{self.description}\n"
 
@@ -20,5 +20,5 @@ class Room:
             output += f"\nThere are {len(self.items)} items that you notice\n"
         for item in self.items:
             output += f"{item}\n"
-        
+
         return output

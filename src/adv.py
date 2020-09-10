@@ -10,7 +10,7 @@ room = {
                      "North of you, the cave mount beckons"),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", [item.level_map, item.torch]),
+passages run north and east.""", [item.map, item.torch]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
@@ -21,7 +21,7 @@ to north. The smell of gold permeates the air."""),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south.""", [item.large_map, item.flashlight])
+earlier adventurers. The only exit is to the south.""", [item.atlas, item.flashlight])
 }
 
 
@@ -63,6 +63,8 @@ user_input = ""
 while user_input != 'q':
 
     user_input = input("\nSelect your next move. ").split(" ")
+
+    # if only one character is entered, it's assumed to be a movement
     if len(user_input) == 1:
         user_input = user_input[0]
         if user_input in ['n', 'e', 's', 'w']:
@@ -74,5 +76,14 @@ while user_input != 'q':
                 print("That's a void. Try again.")
         elif user_input not in ['q']:
             print("Please enter n, e, s, or w to move. Enter q to quit.")
+
+    # if two words are entered, it's assumed to be a command with a verb and object
     elif len(user_input) == 2:
-        pass
+        verb = user_input[0]
+        object = user_input[1]
+        room_items = []
+        for each_item in current_player.current_room.items:
+            room_items.append(each_item.name)
+        if object.capitalize() in room_items:
+            focused_object = getattr(item, str(object))
+            focused_object.on_take()
