@@ -12,15 +12,12 @@ class Room:
         self.e_to = None
         self.w_to = None
     
-    # def _set_n_to(self, room):
-    #     self._n_to = room
-    # def _get_n_to(self):
-    #     return self._n_to
-    # n_to = property(_get_n_to, _set_n_to)
     
     def __str__(self):
         output = f"Your current location is: {self.name}.\n{self.description}\n"
 
+        if len(self.items) > 0:
+            output += f"\nThere are {len(self.items)} items that you notice\n"
         for item in self.items:
             output += f"{item}\n"
         
