@@ -1,5 +1,6 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
+from item import Item
 
 class Room:
     def __init__(self, name, description, items=[]):
@@ -18,4 +19,9 @@ class Room:
     # n_to = property(_get_n_to, _set_n_to)
     
     def __str__(self):
-        return f"Your current location is: {self.name}.\n{self.description}"
+        output = f"Your current location is: {self.name}.\n{self.description}\n"
+
+        for item in self.items:
+            output += f"{item}\n"
+        
+        return output
