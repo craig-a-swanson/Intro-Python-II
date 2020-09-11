@@ -78,8 +78,12 @@ while user_input != 'q':
                 print("That's a void. Try again.")
         # Inventory
         elif user_input in ['i', 'inventory']:
-            pass
-            # TODO: Print out the items currently held by the player.
+            if len(current_player.inventory) == 0:
+                print("You are not carrying any items.")
+            else:
+                print("\nYou are currently carrying:")
+                for player_item in current_player.inventory:
+                    print(f"{player_item}\n")
         # Help
         elif user_input == 'h':
             print(help_file.help_message)
@@ -122,3 +126,5 @@ while user_input != 'q':
 
         else:
             print("\nInvalid request. Enter a valid request or h for help.\n")
+
+    # if more than 2 words, present error message with help suggestion
