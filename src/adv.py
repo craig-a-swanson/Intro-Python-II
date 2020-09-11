@@ -83,7 +83,7 @@ while user_input != 'q':
             else:
                 print("\nYou are currently carrying:")
                 for player_item in current_player.inventory:
-                    print(f"{player_item}\n")
+                    print(f"{player_item}")
         # Help
         elif user_input == 'h':
             print(help_file.help_message)
@@ -128,3 +128,5 @@ while user_input != 'q':
             print("\nInvalid request. Enter a valid request or h for help.\n")
 
     # if more than 2 words, present error message with help suggestion
+    else:
+        print("\nInvalid request. Try again or enter h for help.\n")

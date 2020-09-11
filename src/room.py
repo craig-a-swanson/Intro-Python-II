@@ -14,7 +14,7 @@ class Room:
 
 
     def __str__(self):
-        output = f"Your current location is: {self.name}.\n{self.description}\n"
+        output = f"\nYour current location is: {self.name}.\n{self.description}\n"
 
         if len(self.items) > 0:
             output += f"\nThere are {len(self.items)} items that you notice\n"
