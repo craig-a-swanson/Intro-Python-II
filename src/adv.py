@@ -65,7 +65,7 @@ while user_input != 'q':
 
     user_input = input("\nSelect your next move. ").split(" ")
 
-    # if only one character is entered, it's assumed to be a movement
+    # if only one character is entered, it's assumed to be a movement or display request
     if len(user_input) == 1:
         user_input = user_input[0]
         # Movement
