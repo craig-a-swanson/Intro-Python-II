@@ -94,8 +94,8 @@ while user_input != 'q':
         verb = user_input[0].lower()
         object = user_input[1].lower()
 
-        if verb in ['get', 'take', 'drop']:
-
+        # Pick up Item
+        if verb in ['get', 'take']:
             room_items = []
             for each_item in current_player.current_room.items:
                 room_items.append(each_item.name)
@@ -106,6 +106,19 @@ while user_input != 'q':
                 focused_object.on_take()
             else:
                 print(f"There does not seem to be an object: {object}.\n")
-        
+
+        # Discard Item
+        elif verb == 'drop':
+            player_items = []
+            for each_item in current_player.inventory:
+                player_items.append(each_item.name)
+            if object.capitalize() in player_items:
+                focused_object = getattr(item, str(object))
+                current_player.current_room.items.append(focused_object)
+                current_player.inventory.remove(focused_object)
+                focused_object.on_drop()
+            else:
+                print(f"You don't appear to be carrying an object: {object}.\n")
+
         else:
             print("\nInvalid request. Enter a valid request or h for help.\n")
