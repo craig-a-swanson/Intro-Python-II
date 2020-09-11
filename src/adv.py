@@ -91,8 +91,8 @@ while user_input != 'q':
 
     # if two words are entered, it's assumed to be a command with a verb and object
     elif len(user_input) == 2:
-        verb = user_input[0]
-        object = user_input[1]
+        verb = user_input[0].lower()
+        object = user_input[1].lower()
 
         if verb in ['get', 'take', 'drop']:
 
@@ -101,9 +101,11 @@ while user_input != 'q':
                 room_items.append(each_item.name)
             if object.capitalize() in room_items:
                 focused_object = getattr(item, str(object))
+                current_player.inventory.append(focused_object)
+                current_player.current_room.items.remove(focused_object)
                 focused_object.on_take()
             else:
-                print(f"There does not seem to be an object: {object} here.\n")
+                print(f"There does not seem to be an object: {object}.\n")
         
         else:
             print("\nInvalid request. Enter a valid request or h for help.\n")
