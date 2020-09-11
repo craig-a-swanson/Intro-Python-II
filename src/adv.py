@@ -63,7 +63,7 @@ print(f"\nStart your adventure, {current_player.name}...\n\n{current_player.curr
 user_input = ""
 while user_input != 'q':
 
-    user_input = input("\nSelect your next move. ").split(" ")
+    user_input = input("\nSelect your next move. ").lower().split(" ")
 
     # if only one character is entered, it's assumed to be a movement or display request
     if len(user_input) == 1:
