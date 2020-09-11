@@ -1,7 +1,6 @@
 from room import Room
 from player import Player
 import item
-import textwrap
 import help_file
 
 # Declare all the rooms
@@ -65,7 +64,7 @@ while user_input != 'q':
 
     user_input = input("\nSelect your next move. ").lower().split(" ")
 
-    # if only one character is entered, it's assumed to be a movement or display request
+    # if only one 'word' is entered, it's assumed to be a movement or display request
     if len(user_input) == 1:
         user_input = user_input[0]
         # Movement
@@ -90,6 +89,7 @@ while user_input != 'q':
         # Redisplay Room
         elif user_input in ['r', 'refresh']:
             print(current_player.current_room)
+        # None of the Above
         elif user_input not in ['q']:
             print("\nPlease enter n, e, s, or w to move. Enter h for help.\n")
 
