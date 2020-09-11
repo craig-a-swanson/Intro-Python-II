@@ -74,6 +74,8 @@ while user_input != 'q':
                 print(current_player.current_room)
             else:
                 print("That's a void. Try again.")
+        elif user_input in ['i', 'inventory']:
+            # TODO: Print out the items currently held by the player.
         elif user_input not in ['q']:
             print("Please enter n, e, s, or w to move. Enter q to quit.")
 
@@ -81,9 +83,38 @@ while user_input != 'q':
     elif len(user_input) == 2:
         verb = user_input[0]
         object = user_input[1]
-        room_items = []
-        for each_item in current_player.current_room.items:
-            room_items.append(each_item.name)
-        if object.capitalize() in room_items:
-            focused_object = getattr(item, str(object))
-            focused_object.on_take()
+
+        if verb in ['get', 'take', 'drop']:
+
+            room_items = []
+            for each_item in current_player.current_room.items:
+                room_items.append(each_item.name)
+            if object.capitalize() in room_items:
+                focused_object = getattr(item, str(object))
+                focused_object.on_take()
+            else:
+                print(f"There does not seem to be a {object} here.\n")
+        
+        else:
+            print("\nThese are the only commands I know:\nTo pick up an object use either get or take."
+            "\nTo put down an object use drop.\ne.g, take map")
+
+
+help_message = """\nHere is a list of available commands.
+Navigation Commands:
+    'n' = move north
+    'e' = move east
+    's' = move south
+    'w' = move west
+
+Interaction with Items (one of these commands followed by the item name):
+    'get' or 'take' = pickup an item
+    'drop' = put down an item
+    e.g., 'drop torch' or 'take map'
+
+Current Status:
+    'i' or 'inventory' = list items currently held by player
+
+Game Menu:
+    'q' = quit game and return to system prompt
+"""
